@@ -1,4 +1,4 @@
-package org.playground
+package org.playground.superheroes.heroes
 
 import io.quarkus.test.junit.QuarkusTest
 import io.restassured.RestAssured.given

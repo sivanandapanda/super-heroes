@@ -1,0 +1,27 @@
+quarkus:
+  application:
+    name: rest-heroes
+  hibernate-orm:
+    database:
+      generation: drop-and-create
+  http:
+    cors: true
+    port: 8083
+    test-port: 0
+  jackson:
+    serialization-inclusion: non-empty
+  smallrye-openapi:
+    info-title: Hero API
+    info-description: This API allows CRUD operations on a hero
+    info-version: 1.0
+    servers: "http://localhost:${quarkus.http.port}"
+
+"%prod":
+  quarkus:
+    datasource:
+      username: postgres
+      password: password
+      reactive:
+        url: postgresql://localhost:5432/heroes_database
+    hibernate-orm:
+      sql-load-script: import.sql
