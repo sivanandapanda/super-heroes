@@ -175,13 +175,6 @@
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel:0.12.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_common:0.12.0" level="project" />
     <orderEntry type="library" name="Maven: io.prometheus:simpleclient_tracer_otel_agent:0.12.0" level="project" />
-    <orderEntry type="library" name="Maven: io.quarkus:quarkus-container-image-docker:2.7.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.quarkus:quarkus-container-image:2.7.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.quarkus:quarkus-openshift:2.7.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.quarkus:quarkus-kubernetes-client-internal:2.7.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.quarkus:quarkus-container-image-openshift:2.7.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.quarkus:quarkus-kubernetes:2.7.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.quarkus:quarkus-minikube:2.7.1.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.quarkus:quarkus-junit5:2.7.1.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.quarkus:quarkus-bootstrap-core:2.7.1.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: io.quarkus:quarkus-bootstrap-app-model:2.7.1.Final" level="project" />
