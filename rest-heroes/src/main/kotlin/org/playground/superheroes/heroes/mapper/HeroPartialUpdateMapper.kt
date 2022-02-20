@@ -2,16 +2,15 @@ package org.playground.superheroes.heroes.mapper
 
 import org.mapstruct.Mapper
 import org.mapstruct.MappingTarget
-import org.mapstruct.NullValuePropertyMappingStrategy.IGNORE
 import org.playground.superheroes.heroes.model.Hero
+import org.mapstruct.NullValuePropertyMappingStrategy.IGNORE
 
-@Mapper(componentModel = "cdi", nullValuePropertyMappingStrategy = IGNORE)
+@Mapper(componentModel = "CDI", nullValuePropertyMappingStrategy = IGNORE)
 interface HeroPartialUpdateMapper {
-
     /**
-     * Maps all <code><strong>non-null</strong></code> fields from {@code input} onto {@code target}.
-     * @param input The input {@link Hero}
-     * @param target The target {@link Hero}
+     * Maps all `**non-null**` fields from `input` onto `target`.
+     * @param input The input [Hero]
+     * @param target The target [Hero]
      */
-    fun mapPartialUpdate(input: Hero, @MappingTarget target: Hero)
+    fun mapPartialUpdate(input: Hero?, @MappingTarget target: Hero?)
 }

@@ -24,11 +24,11 @@ class HeroService {
     @Inject
     lateinit var validator: Validator
 
-    @Inject
+    /*@Inject
     lateinit var heroPartialUpdateMapper: HeroPartialUpdateMapper
 
     @Inject
-    lateinit var heroFullUpdateMapper: HeroFullUpdateMapper
+    lateinit var heroFullUpdateMapper: HeroFullUpdateMapper*/
 
     fun findAllHeroes(): Uni<MutableList<Hero>>? {
         return heroRepository.listAll()
@@ -50,7 +50,7 @@ class HeroService {
     fun replaceHero(@NotNull @Valid hero: Hero) : Uni<Hero>? {
         return heroRepository.findById(hero.id)
             .onItem().ifNotNull().transform { found: Hero ->
-                heroFullUpdateMapper.mapFullUpdate(hero, found)
+                //heroFullUpdateMapper.mapFullUpdate(hero, found)
                 found
             }
     }
@@ -59,7 +59,7 @@ class HeroService {
     fun partialUpdateHero(@NotNull hero: Hero) : Uni<Hero>? {
         return heroRepository.findById(hero.id)
             .onItem().ifNotNull().transform { found: Hero ->
-                heroPartialUpdateMapper.mapPartialUpdate(hero, found)
+                //heroPartialUpdateMapper.mapPartialUpdate(hero, found)
                 found
             }
             .onItem().ifNotNull().transform { validatePartialUpdate(it) }
@@ -85,7 +85,7 @@ class HeroService {
             .replaceWithVoid()
     }
 
-    private fun deleteHero(id: Long): Uni<Void>? {
+    fun deleteHero(id: Long): Uni<Void>? {
         return heroRepository.deleteById(id).replaceWithVoid()
     }
 }

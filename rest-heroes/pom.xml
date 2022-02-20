@@ -11,6 +11,7 @@
 
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
+    <maven.compiler.parameters>true</maven.compiler.parameters>
     <failsafe.useModulePath>false</failsafe.useModulePath>
     <kotlin.version>1.6.10</kotlin.version>
     <maven.compiler.release>17</maven.compiler.release>
@@ -91,6 +92,7 @@
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct-processor</artifactId>
       <version>${mapstruct.version}</version>
+      <scope>provided</scope>
     </dependency>
     <!--<dependency>
       <groupId>io.quarkus</groupId>
@@ -234,6 +236,20 @@
                 </configuration>
               </execution>
             </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${compiler-plugin.version}</version>
+            <configuration>
+              <parameters>${maven.compiler.parameters}</parameters>
+              <annotationProcessorPaths>
+                <path>
+                  <groupId>org.mapstruct</groupId>
+                  <artifactId>mapstruct-processor</artifactId>
+                  <version>${mapstruct.version}</version>
+                </path>
+              </annotationProcessorPaths>
+            </configuration>
           </plugin>
         </plugins>
       </build>

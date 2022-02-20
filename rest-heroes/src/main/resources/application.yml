@@ -4,6 +4,9 @@ quarkus:
   hibernate-orm:
     database:
       generation: drop-and-create
+    sql-load-script: import.sql
+    log:
+      sql: true
   http:
     cors: true
     port: 8083
