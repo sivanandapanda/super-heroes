@@ -4,7 +4,7 @@ quarkus:
   hibernate-orm:
     database:
       generation: drop-and-create
-    sql-load-script: import.sql
+    sql-load-script: import1.sql
     log:
       sql: true
   http:
@@ -27,4 +27,4 @@ quarkus:
       reactive:
         url: postgresql://localhost:5432/heroes_database
     hibernate-orm:
-      sql-load-script: import.sql
+      sql-load-script: import1.sql

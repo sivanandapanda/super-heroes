@@ -3,8 +3,6 @@ package org.playground.superheroes.heroes.service
 import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional
 import io.smallrye.mutiny.Multi
 import io.smallrye.mutiny.Uni
-import org.playground.superheroes.heroes.mapper.HeroFullUpdateMapper
-import org.playground.superheroes.heroes.mapper.HeroPartialUpdateMapper
 import org.playground.superheroes.heroes.model.Hero
 import org.playground.superheroes.heroes.repository.HeroRepository
 import javax.enterprise.context.ApplicationScoped
@@ -12,8 +10,8 @@ import javax.inject.Inject
 import javax.validation.ConstraintViolation
 import javax.validation.ConstraintViolationException
 import javax.validation.Valid
-import javax.validation.constraints.NotNull
 import javax.validation.Validator
+import javax.validation.constraints.NotNull
 
 @ApplicationScoped
 class HeroService {
@@ -42,6 +40,7 @@ class HeroService {
         return heroRepository.findRandom()
     }
 
+    @ReactiveTransactional
     fun persistHero(@NotNull hero: Hero): Uni<Hero>? {
         return heroRepository.persist(hero)
     }
@@ -50,7 +49,11 @@ class HeroService {
     fun replaceHero(@NotNull @Valid hero: Hero) : Uni<Hero>? {
         return heroRepository.findById(hero.id)
             .onItem().ifNotNull().transform { found: Hero ->
-                //heroFullUpdateMapper.mapFullUpdate(hero, found)
+                found.level = hero.level
+                found.picture = hero.picture
+                found.name = hero.name
+                found.otherName = hero.otherName
+                found.powers = hero.powers
                 found
             }
     }
@@ -59,7 +62,11 @@ class HeroService {
     fun partialUpdateHero(@NotNull hero: Hero) : Uni<Hero>? {
         return heroRepository.findById(hero.id)
             .onItem().ifNotNull().transform { found: Hero ->
-                //heroPartialUpdateMapper.mapPartialUpdate(hero, found)
+                if(hero.name != null) found.name = hero.name
+                if(hero.otherName != null) found.otherName = hero.otherName
+                if(hero.picture != null) found.picture = hero.picture
+                if(hero.level != null) found.level = hero.level
+                if(hero.powers != null) found.powers = hero.powers
                 found
             }
             .onItem().ifNotNull().transform { validatePartialUpdate(it) }

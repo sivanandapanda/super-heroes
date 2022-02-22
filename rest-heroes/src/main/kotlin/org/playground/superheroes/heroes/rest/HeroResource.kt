@@ -60,11 +60,8 @@ class HeroResource {
     @Operation(summary = "Returns a random hero")
     @APIResponse(responseCode = "200", description = "Gets a random hero",
     content = [Content(mediaType = APPLICATION_JSON, schema = Schema(implementation = Hero::class))])
-    fun getAllHeroes(): Uni<MutableList<Hero>>? {
-        return heroService.findAllHeroes()!!
+    fun getAllHeroes(): Uni<MutableList<Hero>> = heroService.findAllHeroes()!!
             .invoke { heroes: List<Hero?> -> logger.debugf("Total number of heroes: %d",heroes.size)}
-
-    }
 
     @GET
     @Path("/{id}")

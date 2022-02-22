@@ -20,15 +20,14 @@ class Hero {
 
     @NotNull
     @Size(min = 3, max = 50)
-    lateinit var name: String
+    var name: String? = null
 
-    lateinit var otherName: String
+    var otherName: String? = null
 
-    lateinit var picture: String
+    var picture: String? = null
 
     @Column(columnDefinition = "TEXT")
-    lateinit var powers: String
-
+    var powers: String? = null
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
